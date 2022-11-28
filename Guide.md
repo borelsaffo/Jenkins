@@ -5,7 +5,7 @@ Premier Job via UI Jenkins \
 #!/bin/bash \
 git clone https://github.com/borelsaffo/alpinehelloworld.git \
 cd alpinehelloworld  \
-doker build -t ${IMAGE_NAME}:${IMAGE_TAG} . 
+docker build -t ${IMAGE_NAME}:${IMAGE_TAG} . 
 
 ![image](https://user-images.githubusercontent.com/27947973/204240822-19fd57e3-ccb1-453f-9e2d-a4507d618032.png)
 ![image](https://user-images.githubusercontent.com/27947973/204242225-559ec930-4ae1-4c86-a3b4-e4ea730438e6.png)
@@ -17,10 +17,14 @@ comme action a la fin du build: ici on suprime le working directory.
 l'image builder, contruite peut etre publier dans un registry distant ou local.
 ![image](https://user-images.githubusercontent.com/27947973/204243627-3742d2a2-29d4-4c50-ac17-690815cac0d7.png)
 
-resultat build
+resultat build : 
 
 ![image](https://user-images.githubusercontent.com/27947973/204245481-d5339aee-970e-45d4-815d-7f511975fc38.png)
 ![image](https://user-images.githubusercontent.com/27947973/204245413-c3421c8b-b6f9-401e-8804-a589bf50d366.png)
+Image docker contruite discponible dans le host le container Jenkins
+ docker exec -ti  id-container-jenkins  /bin/bash
+![image](https://user-images.githubusercontent.com/27947973/204251203-ce27dea6-d1e7-47a7-96c0-6a1761624884.png)
+
 
 NB : sachant bien que Jenkins est un outil de CI, pour builder un projet, cela est fait par defaut dans un repertoire
 si vous créer un job ou un projet que vous appelez : Build, un dossier build sera créer dans le repertoire de travail de l'outil Jenkins
@@ -39,11 +43,12 @@ Dans le job ci-dessous, après le build, on a une image docker, on contruit un c
 comme il s'agit d'une application web qu'on a packager dans une image Docker, on peut installer le pluging jenkin :"http_request' pour faire des tests.
 https://plugins.jenkins.io/http_request   installer un pluging dans jenkins  pour faire du http
 
-Deuxième job via UI Jenkins
+Deuxième job via UI Jenkins ========
 
 #!/bin/bash \
+git clone https://github.com/borelsaffo/alpinehelloworld.git \
 cd alpinehelloworld \ 
-doker build -t ${IMAGE_NAME}:${IMAGE_TAG} . \
+docker build -t ${IMAGE_NAME}:${IMAGE_TAG} . \
 docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} ${IMAGE_NAME}:${IMAGE_TAG}
 
 
@@ -56,7 +61,12 @@ docker rm ${IMAGE_NAME}
 docker stop ${IMAGE_NAME}  \
 docker rm ${IMAGE_NAME}  \
 
+![image](https://user-images.githubusercontent.com/27947973/204251635-5bd14c55-732c-463b-96c0-0659225c2041.png)
+![image](https://user-images.githubusercontent.com/27947973/204255379-a34e00e7-ea54-4cd8-8894-6ef275663b07.png)
 
+
+Dans se job l'idée est de builder une image, de la tagger directement lors du build
+puis de l'utilisé pour construire un container. cette image est tagger en fonction du registry ou du repos dans lequel on pourrais envissagé la placer
 
 #!/bin/bash \
 cd alpinehelloworld  \
@@ -64,6 +74,16 @@ docker build -t 199883/borelsaffo/${IMAGE_NAME}:${IMAGE_TAG} . \
 docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} 199883/borelsaffo/${IMAGE_NAME}:${IMAGE_TAG} \
 sleep 5
 
+![image](https://user-images.githubusercontent.com/27947973/204248529-4e77ae64-e165-4aeb-9429-10e7d82ca181.png)
+avant le build : supression workspace si existant
+![image](https://user-images.githubusercontent.com/27947973/204248880-5c298aff-4406-44c2-8768-11918809a3ab.png)
+après build : on peut également suprimé le workspace, ceci est une startégie a discuter en équipe
+![image](https://user-images.githubusercontent.com/27947973/204249084-6c674276-c9f7-4741-8d52-0fe43d7e6bcf.png)
+variables
+![image](https://user-images.githubusercontent.com/27947973/204250227-fddcb25e-8d11-4181-bf73-96208b5c7960.png)
+![image](https://user-images.githubusercontent.com/27947973/204250530-50f4e7db-684d-42b3-87d2-7b13ffc54ac6.png)
+![image](https://user-images.githubusercontent.com/27947973/204250578-40e965e1-681d-48a0-9710-74ca73b90a2c.png)
+on peut aussi définir des proxy en varaible
 
 
 
@@ -76,7 +96,7 @@ docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} 199883/borelsaffo:${I
 sleep 5
 
 
-====== Creer un compte sur https://heroku.com   pour la partie run ou déploy
+====== Creer un compte sur https://heroku.com   pour la partie run ou déploy  == = == = == = = ==  = = = == = = = = = = = == =  == ==  == = = = = = =
 
 
 installer plugins "github integration"    pour géré la parte webhook afin que le pipeline soit executer a chaque modification de code présent dans Github.
