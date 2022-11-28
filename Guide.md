@@ -1,10 +1,11 @@
 
-Shell et Jenkins
-Premier Job via UI Jenkins
-#!/bin/bash
-git clone https://github.com/borelsaffo/alpinehelloworld.git
-cd alpinehelloworld 
-doker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+Shell et Jenkins- \
+Premier Job via UI Jenkins \
+
+#!/bin/bash \
+git clone https://github.com/borelsaffo/alpinehelloworld.git \
+cd alpinehelloworld  \
+doker build -t ${IMAGE_NAME}:${IMAGE_TAG} . 
 
 ![image](https://user-images.githubusercontent.com/27947973/204240822-19fd57e3-ccb1-453f-9e2d-a4507d618032.png)
 ![image](https://user-images.githubusercontent.com/27947973/204242225-559ec930-4ae1-4c86-a3b4-e4ea730438e6.png)
@@ -24,27 +25,28 @@ comme il s'agit d'une application web qu'on a packager dans une image Docker, on
 https://plugins.jenkins.io/http_request   installer un pluging dans jenkins  pour faire du http
 
 Deuxième job via UI Jenkins
-#!/bin/bash
-cd alpinehelloworld 
-doker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+
+#!/bin/bash \
+cd alpinehelloworld \ 
+doker build -t ${IMAGE_NAME}:${IMAGE_TAG} . \
 docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} ${IMAGE_NAME}:${IMAGE_TAG}
 
 
-#!/bin/bash
-curl  http://192.168.56.10  | grep -q "helloworld"
-docker stop ${IMAGE_NAME} 
+#!/bin/bash   \
+curl  http://192.168.56.10  | grep -q "helloworld" \
+docker stop ${IMAGE_NAME}  \
 docker rm ${IMAGE_NAME} 
 
-#!/bin/bash
-docker stop ${IMAGE_NAME} 
-docker rm ${IMAGE_NAME} 
+#!/bin/bash \
+docker stop ${IMAGE_NAME}  \
+docker rm ${IMAGE_NAME}  \
 
 
 
-#!/bin/bash
-cd alpinehelloworld 
-docker build -t 199883/borelsaffo/${IMAGE_NAME}:${IMAGE_TAG} .
-docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} 199883/borelsaffo/${IMAGE_NAME}:${IMAGE_TAG}
+#!/bin/bash \
+cd alpinehelloworld  \
+docker build -t 199883/borelsaffo/${IMAGE_NAME}:${IMAGE_TAG} . \
+docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} 199883/borelsaffo/${IMAGE_NAME}:${IMAGE_TAG} \
 sleep 5
 
 
@@ -52,11 +54,12 @@ sleep 5
 
 Le plugin  docker-build-step      plugins gérer artefact
 
-#!/bin/bash
-cd alpinehelloworld 
-docker build -t 199883/borelsaffo:${IMAGE_NAME}-${IMAGE_TAG} .
-docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} 199883/borelsaffo:${IMAGE_NAME}-${IMAGE_TAG}
+#!/bin/bash  \
+cd alpinehelloworld  \
+docker build -t 199883/borelsaffo:${IMAGE_NAME}-${IMAGE_TAG} .- \
+docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} 199883/borelsaffo:${IMAGE_NAME}-${IMAGE_TAG} \
 sleep 5
+
 
 ====== Creer un compte sur https://heroku.com   pour la partie run ou déploy
 
