@@ -6,10 +6,22 @@ git clone https://github.com/borelsaffo/alpinehelloworld.git
 cd alpinehelloworld 
 doker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
 
+![image](https://user-images.githubusercontent.com/27947973/204240822-19fd57e3-ccb1-453f-9e2d-a4507d618032.png)
+![image](https://user-images.githubusercontent.com/27947973/204242225-559ec930-4ae1-4c86-a3b4-e4ea730438e6.png)
+![image](https://user-images.githubusercontent.com/27947973/204242284-032cb514-f7ed-47c7-b679-fdba008f6ecd.png)
+![image](https://user-images.githubusercontent.com/27947973/204242448-1816b3ce-dcef-460d-bff5-3a36f16d2641.png)
+le job recupère un projet sur Github et cree une image docker
+![image](https://user-images.githubusercontent.com/27947973/204242613-4d1c7ff5-64f1-4456-bf07-bfa2db70beb5.png)
+comme action a la fin du build: ici on suprime le working directory.
+l'image builder, contruite peut etre publier dans un registry distant ou local.
+![image](https://user-images.githubusercontent.com/27947973/204243627-3742d2a2-29d4-4c50-ac17-690815cac0d7.png)
 
 
+
+
+Dans le job ci-dessous, après le build, on a une image docker, on contruit un container avec l'image builder
+comme il s'agit d'une application web qu'on a packager dans une image Docker, on peut installer le pluging jenkin :"http_request' pour faire des tests.
 https://plugins.jenkins.io/http_request   installer un pluging dans jenkins  pour faire du http
-
 
 Deuxième job via UI Jenkins
 #!/bin/bash
