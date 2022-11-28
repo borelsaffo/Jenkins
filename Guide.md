@@ -17,6 +17,21 @@ comme action a la fin du build: ici on suprime le working directory.
 l'image builder, contruite peut etre publier dans un registry distant ou local.
 ![image](https://user-images.githubusercontent.com/27947973/204243627-3742d2a2-29d4-4c50-ac17-690815cac0d7.png)
 
+resultat build
+
+![image](https://user-images.githubusercontent.com/27947973/204245481-d5339aee-970e-45d4-815d-7f511975fc38.png)
+![image](https://user-images.githubusercontent.com/27947973/204245413-c3421c8b-b6f9-401e-8804-a589bf50d366.png)
+
+NB : sachant bien que Jenkins est un outil de CI, pour builder un projet, cela est fait par defaut dans un repertoire
+si vous créer un job ou un projet que vous appelez : Build, un dossier build sera créer dans le repertoire de travail de l'outil Jenkins
+Le répertoire de travail (/var/jenkins_home/workspace/build). Vous pouvez par exemple lors de la construction de votre job demandé a Jinkins de suprimer le remertoire de travail a la fin de l'exécution du job. ainsi à chaque fois que le job sera exécuté, jenkins se chargera également de suprimé le dossier du job
+a la fin de l'exécution du job.
+
+
+![image](https://user-images.githubusercontent.com/27947973/204245976-9af49a50-c697-4876-b6ec-8dd7e2d949d9.png)
+
+
+
 
 
 
