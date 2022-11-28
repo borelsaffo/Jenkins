@@ -30,6 +30,8 @@ NB : sachant bien que Jenkins est un outil de CI, pour builder un projet, cela e
 si vous créer un job ou un projet que vous appelez : Build, un dossier build sera créer dans le repertoire de travail de l'outil Jenkins
 Le répertoire de travail (/var/jenkins_home/workspace/build). Vous pouvez par exemple lors de la construction de votre job demandé a Jinkins de suprimer le remertoire de travail a la fin de l'exécution du job. ainsi à chaque fois que le job sera exécuté, jenkins se chargera également de suprimé le dossier du job
 a la fin de l'exécution du job.
+![image](https://user-images.githubusercontent.com/27947973/204256654-800b13d7-b7b4-407a-a905-3d50dd754d17.png)
+
 
 
 ![image](https://user-images.githubusercontent.com/27947973/204245976-9af49a50-c697-4876-b6ec-8dd7e2d949d9.png)
