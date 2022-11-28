@@ -1,6 +1,6 @@
 
 Shell et Jenkins
-
+Premier Job via UI Jenkins
 #!/bin/bash
 git clone https://github.com/borelsaffo/alpinehelloworld.git
 cd alpinehelloworld 
@@ -8,8 +8,10 @@ doker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
 
 
 
-https://plugins.jenkins.io/http_request   installer le plugin dans jenkins  pour faire du http
+https://plugins.jenkins.io/http_request   installer un pluging dans jenkins  pour faire du http
 
+
+Deuxième job via UI Jenkins
 #!/bin/bash
 cd alpinehelloworld 
 doker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
@@ -44,21 +46,21 @@ docker build -t 199883/borelsaffo:${IMAGE_NAME}-${IMAGE_TAG} .
 docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} 199883/borelsaffo:${IMAGE_NAME}-${IMAGE_TAG}
 sleep 5
 
-creer un compte sur https://heroku.com
+====== Creer un compte sur https://heroku.com   pour la partie run ou déploy
 
 
-installer plugins github integration    pour géré la parte webhook afin que le pipeline soit executer a chaque modification de code.
+installer plugins "github integration"    pour géré la parte webhook afin que le pipeline soit executer a chaque modification de code présent dans Github.
+Ici le scénario est telle que le code source du projet soit situé dans un repo Github.
 
 
-le plugins : role-basedauthorization strategy permet de géré les utilisateurs et donc de leurs associer des role pour definir ce a quoi il ont accès.
-Le plugin : docker pipeline très important : 
+le plugins : "role-basedauthorization strategy"  permet de géré les utilisateurs et donc de leurs associer des role pour definir ce a quoi il ont accès.
+
+
+Le plugin : "docker pipeline" très important : 
 
 Bonjour 
 s'il te plait peut tu ouvrire un jinkinsfile. 
 parlant du plugin '' docker pipeline'' J'ai eu des soucis lorsque j'ai essayer d'exécuter des playbook ansible dans mon jenkinsfile
-tel que définit dans le scénario de Dirane, la partie authentification en SSH n est pas tout a fais claire pour moi
+tel que définit dans le scénario de X, la partie authentification en SSH n'est pas tout a fais claire pour moi.
 
-
-
-
-https://plugins.jenkins.io/configuration-as-code/
+solution:    https://plugins.jenkins.io/configuration-as-code/
