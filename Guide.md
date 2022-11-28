@@ -65,6 +65,9 @@ docker rm ${IMAGE_NAME}  \
 
 ![image](https://user-images.githubusercontent.com/27947973/204251635-5bd14c55-732c-463b-96c0-0659225c2041.png)
 ![image](https://user-images.githubusercontent.com/27947973/204255379-a34e00e7-ea54-4cd8-8894-6ef275663b07.png)
+![image](https://user-images.githubusercontent.com/27947973/204258007-b01c48d0-095f-48b0-b183-139298747d70.png)
+![image](https://user-images.githubusercontent.com/27947973/204258112-e5b63c42-5db7-44f3-99c0-3fe490c7f96b.png)
+
 
 
 Dans se job l'idée est de builder une image, de la tagger directement lors du build
